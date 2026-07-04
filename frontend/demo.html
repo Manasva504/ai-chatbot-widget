@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bloom &amp; Co Bakery — Fresh Bakes Daily</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      color: #3b2f2a;
+      background: #fdf9f3;
+      line-height: 1.6;
+    }
+    .demo-note {
+      background: #fff7cc;
+      border-bottom: 1px solid #e6d98a;
+      padding: 10px 20px;
+      text-align: center;
+      font-family: -apple-system, "Segoe UI", sans-serif;
+      font-size: 14px;
+      color: #6b5d1f;
+    }
+    header {
+      background: #4a2e24;
+      color: #fdf9f3;
+      padding: 64px 20px;
+      text-align: center;
+    }
+    header h1 { font-size: 42px; letter-spacing: 1px; }
+    header p { margin-top: 10px; font-style: italic; opacity: 0.9; }
+    section { max-width: 860px; margin: 0 auto; padding: 48px 20px; }
+    h2 {
+      font-size: 28px;
+      margin-bottom: 16px;
+      border-bottom: 2px solid #d8b98f;
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+    .items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .item {
+      background: #fff;
+      border: 1px solid #ecdcc7;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(74, 46, 36, 0.08);
+    }
+    .item h3 { font-size: 18px; margin-bottom: 6px; }
+    .item .price { color: #a05a2c; font-weight: bold; margin-top: 8px; }
+    footer {
+      background: #4a2e24;
+      color: #e8dcd0;
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="demo-note">
+    ⚠️ This is a <strong>demo website</strong> for a fictional bakery, built to
+    showcase the embeddable AI chat widget in the bottom-right corner. Try
+    asking it about opening hours, delivery, or custom cakes!
+  </div>
+
+  <header>
+    <h1>Bloom &amp; Co Bakery</h1>
+    <p>Small-batch breads, cakes &amp; pastries — baked fresh every morning in Indiranagar, Bengaluru</p>
+  </header>
+
+  <section>
+    <h2>About Us</h2>
+    <p>
+      Since 2019, Bloom &amp; Co has been the neighbourhood's favourite spot for
+      slow-fermented sourdough, buttery croissants, and celebration cakes made
+      to order. Everything is baked in-house daily using stone-ground flour and
+      cultured butter — no premixes, no shortcuts.
+    </p>
+  </section>
+
+  <section>
+    <h2>Popular Items</h2>
+    <div class="items">
+      <div class="item">
+        <h3>Classic Sourdough Loaf</h3>
+        <p>48-hour fermented, crackly crust, open crumb.</p>
+        <p class="price">₹220</p>
+      </div>
+      <div class="item">
+        <h3>Almond Croissant</h3>
+        <p>Twice-baked with house-made frangipane.</p>
+        <p class="price">₹160</p>
+      </div>
+      <div class="item">
+        <h3>Belgian Chocolate Truffle Cake</h3>
+        <p>Our best-selling celebration cake. Eggless available.</p>
+        <p class="price">₹1,200 / kg</p>
+      </div>
+      <div class="item">
+        <h3>Masala Chai Bun</h3>
+        <p>Soft brioche swirled with chai-spiced sugar.</p>
+        <p class="price">₹90</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Shop 4, Rosewood Complex, MG Road, Indiranagar, Bengaluru 560038 ·
+    +91 98765 43210 · hello@bloomandco.example.com
+    <br />
+    (Fictional business — demo site for the ai-chatbot-widget portfolio project)
+  </footer>
+
+  <!-- Chat widget configuration + embed. For a real client, these are the
+       only two tags they need to paste before </body>. -->
+  <script>
+    window.ChatWidgetConfig = {
+      apiUrl: "http://localhost:8000",
+      businessName: "Bloom & Co Bakery",
+      primaryColor: "#2563eb",
+      greeting:
+        "Hi! 👋 I'm the Bloom & Co assistant. Ask me about our opening hours, delivery, or custom cake orders!"
+    };
+  </script>
+  <script src="widget.js"></script>
+
+</body>
+</html>
