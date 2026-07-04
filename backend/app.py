@@ -39,12 +39,17 @@ GEMINI_URL = (
 
 app = FastAPI(title="AI Chatbot Widget Backend")
 
-# CORS: allow all origins for local development / demo purposes.
-# In production, lock this down to the real client domain, e.g.:
-#   allow_origins=["https://www.clientbakery.com"]
+# CORS: only these origins may call this backend from a browser.
+# The GitHub Pages site is the real deployment; the localhost entries
+# keep local development (VS Code Live Server / uvicorn) working.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://manasva504.github.io",
+        "http://localhost:5500",
+        "http://127.0.0.1:5500",
+        "http://localhost:8000",
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
