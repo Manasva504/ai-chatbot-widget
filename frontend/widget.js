@@ -133,6 +133,16 @@
     var typingEl = appendMessage("assistant", "typing...");
     typingEl.classList.add("cw-msg-typing");
 
+    // Render's free tier spins the backend down after ~15 min idle, so the
+    // first request after a while can take 20-50s to wake it up. Don't leave
+    // the user staring at "typing..." the whole time — after a few seconds,
+    // swap in a message explaining the delay so it reads as expected
+    // behavior rather than a broken widget.
+    var wakingTimer = setTimeout(function () {
+      typingEl.textContent =
+        "Waking up the server \u2014 this can take up to a minute on the first message, thanks for your patience!";
+    }, 4000);
+
     fetch(config.apiUrl + "/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -149,12 +159,14 @@
         return res.json();
       })
       .then(function (data) {
+        clearTimeout(wakingTimer);
         typingEl.classList.remove("cw-msg-typing");
         typingEl.textContent = data.reply;
         pushHistory("user", text);
         pushHistory("assistant", data.reply);
       })
       .catch(function (err) {
+        clearTimeout(wakingTimer);
         console.error("[chat-widget] Failed to get a reply:", err);
         typingEl.classList.remove("cw-msg-typing");
         typingEl.textContent =
