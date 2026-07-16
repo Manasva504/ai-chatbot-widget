@@ -47,4 +47,4 @@ website. Swap those and the same code works for any business.
 
 Python / FastAPI / Uvicorn · Gemini API (`gemini-2.5-flash-lite`) · vanilla JS
 
-`frontend/demo.html` is a fake bakery site to see the widget working.
+`frontend/demo.html` is a fake(example) bakery site to see the widget working.
